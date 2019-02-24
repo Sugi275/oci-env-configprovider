@@ -1,4 +1,4 @@
-package fn-oci-lb-list
+package envprovider
 
 import (
 	"fmt"
