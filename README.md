@@ -54,6 +54,7 @@ set -x OCI_COMPARTMENT_ID 'ocid1.tenancy.oc1..secret'
 ## Go SourceCode (Example)
 
 `envprovider.GetEnvConfigProvider()` を使用することで、環境変数から ConfigProvider を生成しています。
+https://github.com/Sugi275/oci-create-dnsrecords/blob/master/ocidnstest.go
 
 ```Go
 package main
@@ -71,6 +72,11 @@ func main() {
 	dn := "_acme-challenge.test.enc"
 
 	client, err := dns.NewDnsClientWithConfigurationProvider(envprovider.GetEnvConfigProvider())
+	if err != nil {
+		panic(err)
+	}
+
+	compartmentid, err := envprovider.GetCompartmentID()
 	if err != nil {
 		panic(err)
 	}
@@ -100,6 +106,7 @@ func main() {
 		ZoneNameOrId:               &zn,
 		Domain:                     &dn,
 		UpdateDomainRecordsDetails: updateDomainRecordsDetails,
+		CompartmentId:              &compartmentid,
 	}
 
 	ctx := context.Background()
