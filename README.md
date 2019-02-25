@@ -11,7 +11,7 @@ oci-go-sdkを実行するために必要な全てのクレデンシャルを、�
 - User OCID
 - KeyFingerprint
 - Region
-- CompaertmentID
+- Compaertment OCID
 
 # Install
 
@@ -26,13 +26,13 @@ go get -u github.com/Sugi275/oci-env-configprovider/envprovider
 bash用
 
 ```
-export OCI_PrivateRSAKeyEncyped=`base64 /home/ubuntu/.oci/oci_api_key.pem`
-export OCI_PrivateRSAKey_passphrase="secret"
-export OCI_TenancyOCID="ocid1.tenancy.oc1..secret"
-export OCI_UserOCID="ocid1.user.oc1..secret"
-export OCI_KeyFingerprint="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
-export OCI_Region="us-phoenix-1"
-export OCI_COMPARTMENT_ID="ocid1.tenancy.oc1..secret"
+export OCI_PRIVKEY_BASE64=`base64 /home/ubuntu/.oci/oci_api_key.pem`
+export OCI_PRIVKEY_PASS="secret"
+export OCI_TENANCY_OCID="ocid1.tenancy.oc1..secret"
+export OCI_USER_OCID="ocid1.user.oc1..secret"
+export OCI_PUBKEY_FINGERPRINT="00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00"
+export OCI_REGION="us-phoenix-1"
+export OCI_COMPARTMENT_OCID="ocid1.tenancy.oc1..secret"
 ```
 
 fish用
@@ -40,15 +40,15 @@ fish用
 ```
 # base64 encoded 
 set IFS
-set -x OCI_PrivateRSAKeyEncoded (base64 /home/ubuntu/.oci/oci_api_key.pem)
+set -x OCI_PRIVKEY_BASE64 (base64 /home/ubuntu/.oci/oci_api_key.pem)
 set IFS \n" "\t
 
-set -x OCI_PrivateRSAKey_passphrase ''
-set -x OCI_TenancyOCID 'ocid1.tenancy.oc1..secret'
-set -x OCI_UserOCID 'ocid1.user.oc1..secret'
-set -x OCI_KeyFingerprint '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'
-set -x OCI_Region 'us-phoenix-1'
-set -x OCI_COMPARTMENT_ID 'ocid1.tenancy.oc1..secret'
+set -x OCI_PRIVKEY_PASS ''
+set -x OCI_TENANCY_OCID 'ocid1.tenancy.oc1..secret'
+set -x OCI_USER_OCID 'ocid1.user.oc1..secret'
+set -x OCI_PUBKEY_FINGERPRINT '00:00:00:00:00:00:00:00:00:00:00:00:00:00:00:00'
+set -x OCI_REGION 'us-phoenix-1'
+set -x OCI_COMPARTMENT_OCID 'ocid1.tenancy.oc1..secret'
 ```
 
 ## Go SourceCode (Example)
